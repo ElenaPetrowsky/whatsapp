@@ -35,7 +35,11 @@ const messageHandler = async (client, message) => {
 }
 
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
+    puppeteer: { 
+        headless:true, 
+        args: ['--disable-gpu', '--disable-setuid-sandbox', '--no-sandbox', '--no-zygote'] 
+    }
 });
 
 client.on('qr', (qr) => {
